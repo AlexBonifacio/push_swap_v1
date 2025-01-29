@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:25:04 by abonifac          #+#    #+#             */
-/*   Updated: 2025/01/29 16:12:37 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/01/29 22:44:29 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ size_t	ft_putnbr_base(unsigned int uint_n, char *base);
 size_t	ft_putnbr_u(unsigned int uint_n);
 ssize_t	ft_putstr(const char *s);
 int		ft_printf(const char *str, ...);
+
+long	ft_atol(const char *str);
 
 #endif

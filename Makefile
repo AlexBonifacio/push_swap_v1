@@ -5,7 +5,7 @@ OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 LIBFT_DIR = libft
 LIBFT = libft.a
