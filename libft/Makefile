@@ -6,7 +6,7 @@
 #    By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 00:40:59 by abonifac          #+#    #+#              #
-#    Updated: 2025/01/29 23:10:31 by abonifac         ###   ########.fr        #
+#    Updated: 2025/01/30 19:28:58 by abonifac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRCS = ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c \
 			ft_printf.c ft_putchar.c ft_putadress.c ft_putnbr.c ft_putnbr_base.c \
-			ft_putnbr_u.c ft_putstr.c ft_atol.c
+			ft_putnbr_u.c ft_putstr.c ft_atol.c \
+			ft_lstnew.c ft_lstaad_front.c ft_lstsize.c ft_lstlast.c \
+			ft_lstadd_back.c 
 			
 
 OBJ = $(SRCS:.c=.o)
