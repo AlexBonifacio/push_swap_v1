@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/01/29 23:45:00 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:04:34 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ int str_nonly_dig(char *v[])
 
 	i = 1;
 	y = 0;
+	ft_printf("Checking args\n");
 	while (v[i])
 	{
 		y = 0;
+		if (v[i][y] == '-')
+			y++;
 		while (v[i][y])
 		{
-			printf("v[i][y] %c\n", v[i][y]);
-			if (v[i][y] == '-')
-				y++;
+			ft_printf("v[%u][%u] %c || ", i, y, v[i][y]);
 			if (!ft_isdigit(v[i][y]))
 			{
 				ft_printf("Error no alpha tolerated\n");
@@ -50,10 +51,11 @@ int str_nonly_dig(char *v[])
 		}
 		i++;
 	}
+	ft_printf("Args are ok\n");
 	return (0);
 }
 
-int bigger_int(char *v[])
+int is_long(char *v[])
 {
 	size_t	i;
 	size_t	y;
@@ -81,13 +83,56 @@ int bigger_int(char *v[])
 	}
 	return (0);
 }
+
+int *store(char *v[])
+{
+	size_t	i;
+	size_t	y;
+	int		*tab;
+
+	i = 1;
+	y = 0;
+	tab = malloc(sizeof(int) * sizeof(*v));
+	while (v[i])
+	{
+		tab[y] = ft_atoi(v[i]);
+		y++;
+		i++;
+	}
+	return (tab);
+}
+
+int has_duplicates(int *arr, int size) {
+    int i = 0, j;
+    while (i < size) {
+        j = i + 1;
+        while (j < size) {
+            if (arr[i] == arr[j]) 
+			{
+				ft_printf("Error duplicate number found\n");
+                return 2; // duplicate found 
+            }
+            j++;
+        }
+        i++;
+    }
+    return 0; // no duplicate found
+}
+
 int	main(int a, char *v[])
 {
-
-	long r = ft_atol("922337203685477580");
-	printf("atol %li\n", r);
-	if (str_nonly_dig(v) || bigger_int(v)) // check if the string has something else than digits
-		return (1);
 	check_params(a);
+	if (str_nonly_dig(v) || is_long(v)) // check if the string has something else than digits
+		return (1);
+	int *tab = store(v);
+	if (has_duplicates(tab, a - 1))
+		return (2);
+	int i = 1;
+	while (i < a)
+	{
+		printf("tab[%i] %i\n", i - 1, tab[i - 1]);
+		i++;
+	}
+	free(tab);
 	return (0);
 }
