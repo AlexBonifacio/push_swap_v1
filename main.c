@@ -6,15 +6,13 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/01/30 12:04:34 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/03 00:18:54 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "libft.h"
+#include "push_swap.h"
 #include <stdio.h>
-
 
 static int check_params(int a)
 {
@@ -127,12 +125,18 @@ int	main(int a, char *v[])
 	int *tab = store(v);
 	if (has_duplicates(tab, a - 1))
 		return (2);
-	int i = 1;
-	while (i < a)
+	int i = 0;
+    node *list = NULL;
+	while (i < a - 1)
 	{
-		printf("tab[%i] %i\n", i - 1, tab[i - 1]);
+		printf("tab[%i] %i\n", i, tab[i]);
+		ft_appnode(tab[i], &list);
 		i++;
 	}
 	free(tab);
+	print_list(list);
+	ft_lstclear(&list);
+	print_list(list);
+	
 	return (0);
 }

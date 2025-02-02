@@ -1,6 +1,7 @@
 NAME = push_swap
 
-SRCS = main.c
+SRCS = main.c \
+		ft_print_list.c ft_appnode.c ft_lstclear.c ft_lstdelone.c
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
