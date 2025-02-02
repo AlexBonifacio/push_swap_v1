@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 00:18:54 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/03 00:37:03 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int check_params(int a)
 	if (a == 1)
 	{
 		ft_printf("Use it as follow: ./push_swap int int\n");
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int str_nonly_dig(char *v[])
@@ -53,36 +53,29 @@ int str_nonly_dig(char *v[])
 	return (0);
 }
 
-int is_long(char *v[])
+int	is_long(char *v[])
 {
 	size_t	i;
-	size_t	y;
 
 	i = 1;
-	y = 0;
 	while (v[i])
 	{
-		y = 0;
-		while (v[i][y])
+		if (ft_strlen(v[i]) > 11)
 		{
-			if (ft_strlen(v[i]) > 11)
-			{
-				ft_printf("Error bigger than int\n");
-				return (1);
-			}
-			if (ft_atol(v[i]) > 2147483647 || ft_atol(v[i]) < -2147483648)
-			{
-				ft_printf("Error bigger than int\n");
-				return (1);
-			}
-			y++;
+			ft_printf("Error bigger than int\n");
+			return (1);
+		}
+		if (ft_atol(v[i]) > 2147483647 || ft_atol(v[i]) < -2147483648)
+		{
+			ft_printf("Error bigger than int\n");
+			return (1);
 		}
 		i++;
 	}
 	return (0);
 }
 
-int *store(char *v[])
+int *store(int a, char *v[])
 {
 	size_t	i;
 	size_t	y;
@@ -90,7 +83,9 @@ int *store(char *v[])
 
 	i = 1;
 	y = 0;
-	tab = malloc(sizeof(int) * sizeof(*v));
+	tab = malloc(sizeof(int) * (a - 1));
+	if (!tab)
+		return (NULL);
 	while (v[i])
 	{
 		tab[y] = ft_atoi(v[i]);
@@ -100,29 +95,36 @@ int *store(char *v[])
 	return (tab);
 }
 
-int has_duplicates(int *arr, int size) {
-    int i = 0, j;
+int has_duplicates(int *arr, int size) 
+{
+    int	i; 
+	int	j;
+
+	i = 0;
     while (i < size) {
         j = i + 1;
         while (j < size) {
             if (arr[i] == arr[j]) 
 			{
 				ft_printf("Error duplicate number found\n");
-                return 2; // duplicate found 
+                return (1); // duplicate found 
             }
             j++;
         }
         i++;
     }
-    return 0; // no duplicate found
+    return (0); // no duplicate found
 }
 
 int	main(int a, char *v[])
 {
-	check_params(a);
+	if (!check_params(a))
+		return (1);
 	if (str_nonly_dig(v) || is_long(v)) // check if the string has something else than digits
 		return (1);
-	int *tab = store(v);
+	int *tab = store(a, v);
+	if (!tab)
+		return (3);
 	if (has_duplicates(tab, a - 1))
 		return (2);
 	int i = 0;
