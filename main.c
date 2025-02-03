@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 12:25:58 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:41:45 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int str_nonly_dig(char *v[])
 			y++;
 		while (v[i][y])
 		{
-			ft_printf("v[%u][%u] %c || ", i, y, v[i][y]);
+			// ft_printf("v[%u][%u] %c || ", i, y, v[i][y]);
 			if (!ft_isdigit(v[i][y]))
 			{
 				ft_printf("Error no alpha tolerated\n");
@@ -116,6 +116,112 @@ int has_duplicates(int *arr, int size)
     return (0); // no duplicate found
 }
 
+int	ft_is_sorted(node **list, int a)
+{
+	node *ptr;
+	int	count;
+	count = 0;
+	
+	ptr = *list;
+	while (ptr->next != NULL)
+	{
+		if (ptr->nb < ptr->next->nb)
+			count++;
+		if (count == a - 1)
+			return (1);
+		ptr = ptr->next;
+	}
+	return (0);
+}
+    // Cas 1 : [2, 1, 3] => a > b et a < c
+    // Cas 2 : [3, 2, 1] => a > b et b > c
+    // Cas 3 : [3, 1, 2] => a > c et b < c
+    // Cas 4 : [1, 3, 2] => a < b, a < c et b > c
+    // Cas 5 : [2, 3, 1] => a < b et a > c
+
+void sort_three(node **head_a)
+{
+    int a, b, c;
+
+    if (!(*head_a) || !((*head_a)->next) || !((*head_a)->next->next))
+        return; // 3 elements mini
+    a = (*head_a)->nb;
+    b = (*head_a)->next->nb;
+    c = (*head_a)->next->next->nb;
+    if (a > b && c > a)
+        return (sa(head_a));
+    else if (a > b && b > c)
+        return (sa(head_a), rra(head_a));
+    else if (a > c && c > b)
+        return (ra(head_a));
+    else if (b > c && c > a)
+        return (sa(head_a), ra(head_a));
+    else if (b > a && a > c)
+        return (rra(head_a));
+}
+
+node *find_min_node(node *list)
+{
+    node *min_node;
+
+    if (!list)
+        return (NULL);
+
+    min_node = list;
+    while (list)
+    {
+        if (list->nb < min_node->nb)
+            min_node = list;
+        list = list->next;
+    }
+    return (min_node);
+}
+
+void	sort_five(node **list_a, node **list_b)
+{
+	node	*min;
+	node	*ptr;
+	int		count;
+	
+	count = 0;
+	list_b = NULL;
+	ptr = (*list_a);
+	min = find_min_node((*list_a));
+	while (((ptr) != min))
+	{
+		count++;
+		(ptr) = (ptr)->next;
+	}
+	if (count >= 3)
+	{
+		while ((*list_a) != min)
+			rra(list_a);
+	}
+	else
+	{
+		while ((*list_a) != min)
+			ra(list_a);
+	}
+	pb(list_a, list_b);
+	printf("%i", min->nb);
+	return ;
+}
+
+int	ft_select_algo(node **list_a, node **list_b, int a)
+{
+	if (ft_is_sorted(list_a, a))
+		return (ft_printf("Already sorted\n"));
+	else if (a == 3)
+	{
+		sort_three(list_a);
+	}
+	else
+	{
+		sort_five(list_a, list_b);
+	}
+	return (0);
+}
+
 int	main(int a, char *v[])
 {
 	if (!check_params(a))
@@ -129,27 +235,49 @@ int	main(int a, char *v[])
 		return (2);
 	int i = 0;
 	
-    node *list_a = NULL;
-	node *list_b = NULL;
+    node *list_a = malloc(sizeof(node));
+	node *list_b = malloc(sizeof(node));
+	list_a = NULL;
+	list_b = NULL;
+	
 	while (i < a - 1)
 	{
-		printf("tab[%i] %i\n", i, tab[i]);
+		// printf("tab[%i] %i\n", i, tab[i]);
 		ft_appnode(tab[i], &list_a);
 		i++;
 	}
 	free(tab);
-	print_list(list_a);
-	
-	sa(&list_a);
-	print_list(list_a);
-	
-	pb(&list_a, &list_b);
-	pb(&list_a, &list_b);
-	pb(&list_a, &list_b);
 	
 	print_list(list_a);
+	ft_select_algo(&list_a, &list_b, a - 1);
+	
 	print_list(list_b);
+	print_list(list_a);
 	
-	ft_lstclear(&list_a);	
+	// sa(&list_a);
+	// print_list(list_a);
+
+	// sa(&list_a);
+	// rra(&list_a);
+	// print_list(list_a);
+	
+	// ft_printf("push a to be 3 times\n");
+	// pb(&list_a, &list_b);
+	// pb(&list_a, &list_b);
+	// pb(&list_a, &list_b);
+	
+	// print_list(list_a);
+	// print_list(list_b);
+
+	// ft_printf("rotate list b\n");
+	// rb(&list_b);
+	// print_list(list_b);
+	
+	// ft_printf("reverse rotate list b\n");
+	// rrb(&list_b);
+	// print_list(list_b);
+	
+	// ft_lstclear(&list_b);
+	// ft_lstclear(&list_a);	
 	return (0);
 }

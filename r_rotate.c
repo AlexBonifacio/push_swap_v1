@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   r_rotate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 12:28:43 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 18:24:03 by abonifac         ###   ########.fr       */
+/*   Created: 2025/02/03 15:35:21 by abonifac          #+#    #+#             */
+/*   Updated: 2025/02/03 18:24:37 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,42 +23,52 @@ static node	*ft_lflast(node *lst)
 	return (lst);
 }
 
-void	ra(node **head_a)
+static	node *ft_ntlast(node *lst, node *last)
 {
-	node	*tmp;
+	if (!lst)
+		return (NULL);
+	while (lst->next !=  last)
+	{
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+void	rra(node **head_a)
+{
 	node	*last;
+	node	*ntlast;
 	
 	if (*head_a == NULL || ((*head_a)->next) == NULL)
 		return ;
-	last = *head_a;
-	last = ft_lflast(last);
+	last = ft_lflast(*head_a);
+	ntlast = ft_ntlast(*head_a, last);
 	last->next = (*head_a);
-	tmp = (*head_a);
-	(*head_a) = (*head_a)->next;
-	tmp->next = NULL;
-	ft_printf("ra\n");
+	(*head_a) = last;
+	ntlast->next = NULL;
+	ft_printf("rra\n");
 }
 
-void	rb(node **head_b)
+void	rrb(node **head_b)
 {
-	node	*tmp;
 	node	*last;
+	node	*ntlast;
 	
 	if (*head_b == NULL || ((*head_b)->next) == NULL)
 		return ;
-	last = *head_b;
-	last = ft_lflast(last);
+	last = ft_lflast(*head_b);
+	ntlast = ft_ntlast(*head_b, last);
 	last->next = (*head_b);
-	tmp = (*head_b);
-	(*head_b) = (*head_b)->next;
-	tmp->next = NULL;
-	ft_printf("rb\n");	
+	(*head_b) = last;
+	ntlast->next = NULL;
+	ft_printf("rrb\n");
+
 }
 
-void	rr(node **head_a, node **head_b)
+void	rrr(node **head_a, node **head_b)
 {
-	ra(head_a);
-	rb(head_b);
-	ft_printf("rr\n");
+	rra(head_a);
+	rrb(head_b);
+	ft_printf("rrr\n");
 
 }

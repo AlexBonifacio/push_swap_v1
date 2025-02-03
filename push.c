@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:24:05 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 12:04:24 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:46:34 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	pa(node **head_a, node **head_b)
 	*head_b = (*head_b)->next;
 	first_b->next = *head_a;
 	*head_a = first_b;
+	ft_printf("pa\n");
+
 }
 
 void	pb(node **head_a, node **head_b)
@@ -35,6 +37,7 @@ void	pb(node **head_a, node **head_b)
 		return ;
 	first_a = *head_a;
 	*head_a = (*head_a)->next;
-	first_a->next = *head_b;
+	first_a->next = (*head_b);
 	*head_b = first_a;
+	ft_printf("pb\n");
 }
