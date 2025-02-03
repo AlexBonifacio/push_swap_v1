@@ -1,7 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/02/03 11:09:10 by abonifac          #+#    #+#              #
+#    Updated: 2025/02/03 11:23:46 by abonifac         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+
 NAME = push_swap
 
 SRCS = main.c \
-		ft_print_list.c ft_appnode.c ft_lstclear.c ft_lstdelone.c
+		ft_print_list.c ft_appnode.c ft_lstclear.c ft_lstdelone.c swaps.c \
+		
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 

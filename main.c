@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 00:37:03 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:11:02 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ int	main(int a, char *v[])
 	}
 	free(tab);
 	print_list(list);
-	ft_lstclear(&list);
+	sa(&list);
 	print_list(list);
-	
+	ft_lstclear(&list);	
 	return (0);
 }
