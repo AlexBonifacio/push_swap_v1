@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 11:11:02 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:25:58 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,17 +128,28 @@ int	main(int a, char *v[])
 	if (has_duplicates(tab, a - 1))
 		return (2);
 	int i = 0;
-    node *list = NULL;
+	
+    node *list_a = NULL;
+	node *list_b = NULL;
 	while (i < a - 1)
 	{
 		printf("tab[%i] %i\n", i, tab[i]);
-		ft_appnode(tab[i], &list);
+		ft_appnode(tab[i], &list_a);
 		i++;
 	}
 	free(tab);
-	print_list(list);
-	sa(&list);
-	print_list(list);
-	ft_lstclear(&list);	
+	print_list(list_a);
+	
+	sa(&list_a);
+	print_list(list_a);
+	
+	pb(&list_a, &list_b);
+	pb(&list_a, &list_b);
+	pb(&list_a, &list_b);
+	
+	print_list(list_a);
+	print_list(list_b);
+	
+	ft_lstclear(&list_a);	
 	return (0);
 }

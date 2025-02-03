@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 11:24:05 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 12:04:24 by abonifac         ###   ########.fr       */
+/*   Created: 2025/02/03 12:28:43 by abonifac          #+#    #+#             */
+/*   Updated: 2025/02/03 12:30:20 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-	if the pile is empty do nothing
-	points head_b to the next value of pile b
-*/
-void	pa(node **head_a, node **head_b)
-{
-	node *first_b;
-	
-	if (*head_b == NULL)
-		return ;
-	first_b = *head_b;
-	*head_b = (*head_b)->next;
-	first_b->next = *head_a;
-	*head_a = first_b;
-}
 
-void	pb(node **head_a, node **head_b)
+void	ra(node **head_a)
 {
-	node *first_a;
+	node *tmp;
 	
 	if (*head_a == NULL)
 		return ;
-	first_a = *head_a;
-	*head_a = (*head_a)->next;
-	first_a->next = *head_b;
-	*head_b = first_a;
+	
 }

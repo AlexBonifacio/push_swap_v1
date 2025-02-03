@@ -6,17 +6,14 @@
 #    By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 11:09:10 by abonifac          #+#    #+#              #
-#    Updated: 2025/02/03 11:23:46 by abonifac         ###   ########.fr        #
+#    Updated: 2025/02/03 14:36:33 by abonifac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
 NAME = push_swap
-
-SRCS = main.c \
-		ft_print_list.c ft_appnode.c ft_lstclear.c ft_lstdelone.c swaps.c \
-		
+SRCS = main.c ft_print_list.c ft_appnode.c ft_lstclear.c ft_lstdelone.c swaps.c push.c
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
@@ -24,30 +21,30 @@ CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror
 
 LIBFT_DIR = libft
-LIBFT = libft.a
+LIBFT = $(LIBFT_DIR)/libft.a
 
-@all: $(LIBFT) $(NAME)
+all: $(OBJ_DIR) $(OBJS) libft $(NAME)
 
-$(LIBFT):
-	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT_DIR)/$(LIBFT)
-	@$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) -o $(NAME)
+libft:
+	$(MAKE) --no-print-directory -C $(LIBFT_DIR) all
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I$(LIBFT_DIR) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c push_swap.h Makefile | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	@rm -rf $(OBJ_DIR)
-	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
+	rm -rf $(OBJ_DIR)
+	$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
 
 fclean: clean
-	@rm -f $(NAME)
-	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
+	rm -f $(NAME)
+	$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
