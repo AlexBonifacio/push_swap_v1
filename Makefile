@@ -6,7 +6,7 @@
 #    By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 11:09:10 by abonifac          #+#    #+#              #
-#    Updated: 2025/02/03 22:44:28 by abonifac         ###   ########.fr        #
+#    Updated: 2025/02/04 17:57:18 by abonifac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 NAME = push_swap
 SRCS = main.c ft_print_list.c ft_appnode.c ft_lstclear.c ft_lstdelone.c swaps.c \
 		push.c rotate.c r_rotate.c \
+		push_swap_utils.c ft_bubblesort.c small_sort.c \
 		
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

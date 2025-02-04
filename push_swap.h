@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:32:47 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 00:39:09 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 18:32:57 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 # include <stdlib.h>
 # include "libft.h"
-
-// typedef struct node
-// {
-// 	int nb;
-// 	struct node *next;
-// } node;
 
 void	print_list(node *list);
 void	ft_appnode(int n, node **list);
@@ -35,6 +29,18 @@ void	ra(node **head_a);
 void	rb(node **head_b);
 void	rra(node **head_a);
 void	rrb(node **head_b);
+
+void	ft_bubblesort(int *tab, int tab_size);
+int		find_max_index(node *list);
+node	*find_min_node(node *list);
+int		ft_node_index(node *list, node *lf_node);
+int		*ft_store_intab(int a, char *v[]);
+
+void	sort_three(node **head_a);
+void	sort_five(node **list_a, node **list_b);
+int		ft_is_sorted(node **list, int a);
+
+
 
 
 #endif
