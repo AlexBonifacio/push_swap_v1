@@ -6,7 +6,7 @@
 #    By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 00:40:59 by abonifac          #+#    #+#              #
-#    Updated: 2025/02/03 14:34:34 by abonifac         ###   ########.fr        #
+#    Updated: 2025/02/04 00:41:33 by abonifac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 			ft_printf.c ft_putchar.c ft_putadress.c ft_putnbr.c ft_putnbr_base.c \
 			ft_putnbr_u.c ft_putstr.c ft_atol.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstadd_back.c \
+			ft_lstadd_back.c ft_nodelsize.c\
 
 
 OBJ_DIR = obj
@@ -37,7 +37,7 @@ all:		$(NAME)
 
 libft.a: $(OBJ)
 		ar rcs libft.a $(OBJ)
-		
+
 $(OBJ_DIR)/%.o: %.c libft.h Makefile | $(OBJ_DIR)
 		$(CC) $(CFLAGS) -c $< -o $@
 

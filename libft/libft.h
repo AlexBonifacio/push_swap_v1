@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:25:04 by abonifac          #+#    #+#             */
-/*   Updated: 2025/01/30 19:43:50 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 00:41:45 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct node
+{
+	int nb;
+	struct node *next;
+}	node;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -62,6 +68,7 @@ size_t	ft_strlen(const char *s);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
+int		ft_nodelsize(node *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 

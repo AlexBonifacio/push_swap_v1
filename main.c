@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 19:41:45 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 01:15:11 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void sort_three(node **head_a)
     int a, b, c;
 
     if (!(*head_a) || !((*head_a)->next) || !((*head_a)->next->next))
-        return; // 3 elements mini
+        return ; // 3 elements mini
     a = (*head_a)->nb;
     b = (*head_a)->next->nb;
     c = (*head_a)->next->next->nb;
@@ -177,33 +177,44 @@ node *find_min_node(node *list)
     return (min_node);
 }
 
+void	sort_two_reverse(node **list)
+{
+	int	a;
+	int	b;
+	
+	a = (*list)->nb;
+	b = (*list)->next->nb;
+
+	if (a < b)
+		return (sb(list));
+}
+
 void	sort_five(node **list_a, node **list_b)
 {
 	node	*min;
-	node	*ptr;
-	int		count;
+	// int		count;
 	
-	count = 0;
-	list_b = NULL;
-	ptr = (*list_a);
+	// count = 0;
+	*list_b = NULL;
 	min = find_min_node((*list_a));
-	while (((ptr) != min))
+	// count = ft_nodelsize((*list_a));
+	while (ft_nodelsize((*list_a)) > 3)
 	{
-		count++;
-		(ptr) = (ptr)->next;
+			while ((*list_a) != min)
+				rra(list_a);
+			pb(list_a, list_b);
+			min = find_min_node((*list_a));
+		// else
+		// {
+		// 	while ((*list_a) != min)
+		// 		ra(list_a);
+		// 	pb(list_a, list_b);
+		// 	min = find_min_node((*list_a));
+		// }
 	}
-	if (count >= 3)
-	{
-		while ((*list_a) != min)
-			rra(list_a);
-	}
-	else
-	{
-		while ((*list_a) != min)
-			ra(list_a);
-	}
-	pb(list_a, list_b);
-	printf("%i", min->nb);
+	sort_three(list_a);
+	pa(list_a, list_b);
+	pa(list_a, list_b);
 	return ;
 }
 
@@ -235,14 +246,12 @@ int	main(int a, char *v[])
 		return (2);
 	int i = 0;
 	
-    node *list_a = malloc(sizeof(node));
-	node *list_b = malloc(sizeof(node));
-	list_a = NULL;
-	list_b = NULL;
+    node *list_a = NULL;
+	node *list_b = NULL;
 	
 	while (i < a - 1)
 	{
-		// printf("tab[%i] %i\n", i, tab[i]);
+		printf("tab[%i] %i\n", i, tab[i]);
 		ft_appnode(tab[i], &list_a);
 		i++;
 	}
@@ -251,8 +260,11 @@ int	main(int a, char *v[])
 	print_list(list_a);
 	ft_select_algo(&list_a, &list_b, a - 1);
 	
-	print_list(list_b);
+	ft_printf("list a : ");
 	print_list(list_a);
+	ft_printf("list b : ");
+
+	print_list(list_b);
 	
 	// sa(&list_a);
 	// print_list(list_a);
