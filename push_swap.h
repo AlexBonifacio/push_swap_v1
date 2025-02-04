@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:32:47 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 18:32:57 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:15:04 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ int		*ft_store_intab(int a, char *v[]);
 void	sort_three(node **head_a);
 void	sort_five(node **list_a, node **list_b);
 int		ft_is_sorted(node **list, int a);
-
-
+int		has_duplicates(int *arr, int size);
+int		is_long(char *v[]);
+int		str_nonly_dig(char *v[]);
+int		check_params(int a);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:35:21 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/03 18:24:37 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:26:19 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static node	*ft_lflast(node *lst)
 	return (lst);
 }
 
-static	node *ft_ntlast(node *lst, node *last)
+static node	*ft_ntlast(node *lst, node *last)
 {
 	if (!lst)
 		return (NULL);
-	while (lst->next !=  last)
+	while (lst->next != last)
 	{
 		lst = lst->next;
 	}
@@ -38,7 +38,7 @@ void	rra(node **head_a)
 {
 	node	*last;
 	node	*ntlast;
-	
+
 	if (*head_a == NULL || ((*head_a)->next) == NULL)
 		return ;
 	last = ft_lflast(*head_a);
@@ -53,7 +53,7 @@ void	rrb(node **head_b)
 {
 	node	*last;
 	node	*ntlast;
-	
+
 	if (*head_b == NULL || ((*head_b)->next) == NULL)
 		return ;
 	last = ft_lflast(*head_b);
@@ -62,7 +62,6 @@ void	rrb(node **head_b)
 	(*head_b) = last;
 	ntlast->next = NULL;
 	ft_printf("rrb\n");
-
 }
 
 void	rrr(node **head_a, node **head_b)
@@ -70,5 +69,4 @@ void	rrr(node **head_a, node **head_b)
 	rra(head_a);
 	rrb(head_b);
 	ft_printf("rrr\n");
-
 }

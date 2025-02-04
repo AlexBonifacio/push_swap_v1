@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_appnodes.c                                      :+:      :+:    :+:   */
+/*   ft_appnode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:32:04 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/02 23:26:29 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 18:40:39 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_appnode(int n, node **list)
 	}
 	ptr = *list;
 	while (ptr != NULL)
-	{	
+	{
 		if (ptr->next == NULL)
 		{
 			ptr->next = new_node;
@@ -39,4 +39,3 @@ void	ft_appnode(int n, node **list)
 		ptr = ptr->next;
 	}
 }
-

@@ -6,95 +6,13 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 18:35:08 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:29:38 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
-
-static int check_params(int a)
-{
-	if (a == 1)
-	{
-		ft_printf("Use it as follow: ./push_swap int int\n");
-		return (0);
-	}
-	return (1);
-}
-
-int str_nonly_dig(char *v[])
-{
-	size_t	i;
-	size_t	y;
-
-	i = 1;
-	y = 0;
-	// ft_printf("Checking args\n");
-	while (v[i])
-	{
-		y = 0;
-		if (v[i][y] == '-')
-			y++;
-		while (v[i][y])
-		{
-			// ft_printf("v[%u][%u] %c || ", i, y, v[i][y]);
-			if (!ft_isdigit(v[i][y]))
-			{
-				ft_printf("Error no alpha tolerated\n");
-				return (1);
-			}
-			y++;
-		}
-		i++;
-	}
-	// ft_printf("Args are ok\n");
-	return (0);
-}
-
-int	is_long(char *v[])
-{
-	size_t	i;
-
-	i = 1;
-	while (v[i])
-	{
-		if (ft_strlen(v[i]) > 11)
-		{
-			ft_printf("Error bigger than int\n");
-			return (1);
-		}
-		if (ft_atol(v[i]) > 2147483647 || ft_atol(v[i]) < -2147483648)
-		{
-			ft_printf("Error bigger than int\n");
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-int has_duplicates(int *arr, int size) 
-{
-    int	i; 
-	int	j;
-
-	i = 0;
-    while (i < size) {
-        j = i + 1;
-        while (j < size) {
-            if (arr[i] == arr[j]) 
-			{
-				ft_printf("Error duplicate number found\n");
-                return (1); // duplicate found 
-            }
-            j++;
-        }
-        i++;
-    }
-    return (0); // no duplicate found
-}
 
 		// On part du principe que ta pile A contient des indices allant de 0 à size - 1
 		// # Résultat attendu : nombre de bits nécessaire pour représenter max
@@ -195,9 +113,7 @@ int	main(int a, char *v[])
         // On remplace la valeur par l'indice trouvé
         tmp->nb = i;
         tmp = tmp->next;
-    }
-	
-	
+    }	
 	i = 0;
 	while (i < a - 1)
 	{
