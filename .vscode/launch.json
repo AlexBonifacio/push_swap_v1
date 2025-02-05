@@ -5,7 +5,7 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": ["9", "8", "7", "6", "5"],
+      "args": ["6", "5", "4", "3 ", "2"],
       "stopAtEntry": false,
       "externalConsole": false,
     //   "cwd": "/home/abonifac/milestone2/push_swap_v1",

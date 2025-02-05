@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 19:29:38 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:45:37 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-		// On part du principe que ta pile A contient des indices allant de 0 à size - 1
-		// # Résultat attendu : nombre de bits nécessaire pour représenter max
-		// Pour chaque passe, on parcourt tous les éléments de la pile A
-		// Récupération de la valeur (l'indice) en tête de pile A
-		// Vérifie le bit i de num : s'il est 0, on le pousse dans B, sinon on fait une rotation sur A
-		// # Résultat attendu : l'élément est déplacé dans la pile B
-		// # Résultat attendu : la pile A est tournée
-		// Récupère tous les éléments de la pile B dans A
+		// pile a is used with indexes
+		// we look for the maximum of bits to reprensent the biggest number
+		// we through all a for each bit
+		// we check the value pointed by head
+		// we check if the bit is 0 (it means even number) and we push it to b
+		// or we rotate a
+		// once we checked the all list we push b in a
+		
 void	radix_sort(node **list_a, node **list_b, int size)
 {
 	int max;
@@ -31,10 +31,8 @@ void	radix_sort(node **list_a, node **list_b, int size)
 	int num;
 
 	max = find_max_index(*list_a);
-	max_bits = 0;
-	while ((max >> max_bits) != 0)
-		max_bits++; 
-
+	max_bits = -1;
+	while ((max >> ++max_bits) != 0)
 	i = 0;
 	while (i < max_bits)
 	{
@@ -78,7 +76,7 @@ int	main(int a, char *v[])
 {
 	if (!check_params(a))
 		return (1);
-	if (str_nonly_dig(v) || is_long(v)) // check if the string has something else than digits
+	if (str_nonly_dig(v) || is_long(v))
 		return (1);
 	int *tab = ft_store_intab(a, v);
 	if (!tab)
@@ -90,38 +88,29 @@ int	main(int a, char *v[])
     node *list_a = NULL;
 	node *list_b = NULL;
 	
+	int y = a - 2;
 	while (i < a - 1)
 	{
-		// printf("tab[%i] %i\n", i, tab[i]);
-		ft_appnode(tab[i], &list_a);
+		ft_appnode(tab[y], &list_a);
 		i++;
+		y--;
 	}
-
 	node *tmp = list_a;
 	ft_bubblesort(tab, a - 1);
 	i = 0;
 	while (tmp)
     {
         i = 0;
-        // On parcourt le tableau pour trouver la position de tmp->nb
-        while (i < a - 1)
+        while (i < a - 1) // look in the array for the position of tmp->nb
         {
             if (tmp->nb == tab[i])
                 break;
             i++;
         }
-        // On remplace la valeur par l'indice trouvé
-        tmp->nb = i;
+        tmp->nb = i; // we change the value for the index
         tmp = tmp->next;
-    }	
+    }
 	i = 0;
-	while (i < a - 1)
-	{
-		// printf("tab[%i] %i\n", i, tab[i]);
-		i++;
-	}
-	
-	// print_list(list_a);
 	ft_select_algo(&list_a, &list_b, a - 1);
 	tmp = list_a;
 	while (tmp)
@@ -135,40 +124,8 @@ int	main(int a, char *v[])
 		}
 		tmp->nb = tab[i];
 		tmp = tmp->next;
-		
 	}
 	free(tab);
-	
-	ft_printf("list a : ");
-	print_list(list_a);
-	
-	ft_printf("list b : ");
-	print_list(list_b);
-	
-	
-	// sa(&list_a);
-	// print_list(list_a);
-
-	// sa(&list_a);
-	// rra(&list_a);
-	// print_list(list_a);
-	
-	// ft_printf("push a to be 3 times\n");
-	// pb(&list_a, &list_b);
-	// pb(&list_a, &list_b);
-	// pb(&list_a, &list_b);
-	
-	// print_list(list_a);
-	// print_list(list_b);
-
-	// ft_printf("rotate list b\n");
-	// rb(&list_b);
-	// print_list(list_b);
-	
-	// ft_printf("reverse rotate list b\n");
-	// rrb(&list_b);
-	// print_list(list_b);
-	
 	ft_lstclear(&list_b);
 	ft_lstclear(&list_a);	
 	return (0);

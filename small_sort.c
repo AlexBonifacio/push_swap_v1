@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:57:46 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 18:34:24 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:35:58 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	sort_five(node **list_a, node **list_b)
 {
 	helper_sort_five(list_a, list_b);
 	sort_three(list_a);
-	pa(list_a, list_b);
-	pa(list_a, list_b);
+	while ((*list_b))
+		pa(list_a, list_b);
 	return ;
 }
 
