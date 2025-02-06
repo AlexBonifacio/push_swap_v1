@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:32:47 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 19:15:04 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:05:16 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include "libft.h"
 
 void	print_list(node *list);
-void	ft_appnode(int n, node **list);
+void	ft_appnode(int n, node **list, int *tab);
 void	ft_lstclear(node **lst);
 void	ft_lstdelone(node *lst, void (*del)(void *));
+void	add_node(int a, node **list_a, int *tab);
+
 
 void	sa(node **head_a);
 void	sb(node **head_b);
@@ -36,9 +38,11 @@ node	*find_min_node(node *list);
 int		ft_node_index(node *list, node *lf_node);
 int		*ft_store_intab(int a, char *v[]);
 
+void	sort_two(node **list_a);
 void	sort_three(node **head_a);
 void	sort_five(node **list_a, node **list_b);
 int		ft_is_sorted(node **list, int a);
+
 int		has_duplicates(int *arr, int size);
 int		is_long(char *v[]);
 int		str_nonly_dig(char *v[]);

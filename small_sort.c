@@ -6,12 +6,18 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:57:46 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/05 19:35:58 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:22:05 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
+
+void	sort_two(node **list_a)
+{
+	if ((*list_a) > (*list_a)->next)
+		sa(list_a);
+}
 
 /*3 elements mini
 case 1 : [2, 1, 3] => c > a & a > b

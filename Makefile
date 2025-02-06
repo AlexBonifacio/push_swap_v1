@@ -6,7 +6,7 @@
 #    By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 11:09:10 by abonifac          #+#    #+#              #
-#    Updated: 2025/02/05 18:51:24 by abonifac         ###   ########.fr        #
+#    Updated: 2025/02/06 16:35:36 by abonifac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(OBJ_DIR) $(OBJS) libft $(NAME)
+all: libft $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(OBJS) $(LIBFT) -o $(NAME)

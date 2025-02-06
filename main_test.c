@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 23:32:19 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/05 19:39:52 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:24:00 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ int	main(int a, char *v[])
 	node *list_b = NULL;
 	
 	int y = a - 2;
-	while (i < a - 1)
-	{
-		// printf("tab[%i] %i\n", y, tab[y]);
-		ft_appnode(tab[y], &list_a);
-		i++;
-		y--;
-	}
+	// while (i < a - 1)
+	// {
+	// 	// printf("tab[%i] %i\n", y, tab[y]);
+	// 	ft_appnode(tab[y], &list_a);
+	// 	i++;
+	// 	y--;
+	// }
 	// ft_printf("list a : ");
 	// print_list(list_a);
 

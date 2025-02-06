@@ -6,7 +6,7 @@
 /*   By: abonifac <abonifac@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 18:35:38 by abonifac          #+#    #+#             */
-/*   Updated: 2025/02/04 19:16:53 by abonifac         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:33:52 by abonifac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	has_duplicates(int *arr, int size)
 		{
 			if (arr[i] == arr[j])
 			{
+				free(arr);
 				ft_printf("Error\n");
 				return (1);
 			}
